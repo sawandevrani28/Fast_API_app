@@ -27,10 +27,16 @@ jobs:
         docker build -t $IMAGE_NAME:latest -f Dockerfile .
         docker push $IMAGE_NAME:latest
 
-    - name: Update Image in Kubernetes Manifest
+    - name: Update image in K8s manifest
       run: |
         sed -i "s|image: .*|image: $IMAGE_NAME:latest|" k8s/fastapi-deployment.yaml
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git commit -am "Update image to latest"
+
+
+    - name: Push updated manifest back to GitHub
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git remote set-url origin https://x-access-token:${{ secrets.SD_TOKEN }}@github.com/${{ github.repository }}
+        git add k8s/fastapi-deployment.yaml
+        git commit -m "Update image to latest"
         git push
