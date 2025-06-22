@@ -2,7 +2,7 @@ name: Build & Deploy FastAPI App
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
