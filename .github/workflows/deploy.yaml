@@ -32,11 +32,11 @@ jobs:
         sed -i "s|image: .*|image: $IMAGE_NAME:latest|" k8s/fastapi-deployment.yaml
 
 
-    - name: Push updated manifest back to GitHub
-      run: |
-        git config user.name "github-actions"
-        git config user.email "github-actions@github.com"
-        git remote set-url origin https://x-access-token:${{ secrets.SD_TOKEN }}@github.com/${{ github.repository }}
-        git add k8s/fastapi-deployment.yaml
-        git commit -m "Update image to latest"
-        git push
+    - name: Commit and push changes
+      uses: EndBug/add-and-commit@v9
+      with:
+        author_name: github-actions
+        author_email: github-actions@github.com
+        message: Update image to latest
+        add: 'k8s/fastapi-deployment.yaml'
+        github_token: ${{ secrets.SD_TOKEN }}
