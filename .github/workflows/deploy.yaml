@@ -39,7 +39,7 @@ jobs:
       with:
         author_name: github-actions
         author_email: github-actions@github.com
-        message: Update image to latest
-        add: 'k8s/fastapi-deployment.yaml'
-        token: ${{ secrets.SD_TOKEN }}
+        message: "Update image to latest"
+        add: "k8s/fastapi-deployment.yaml"
+        github_token: ${{ secrets.SD_TOKEN }}
 #
