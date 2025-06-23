@@ -42,4 +42,6 @@ jobs:
         message: "Update image to latest"
         add: "k8s/fastapi-deployment.yaml"
         github_token: ${{ secrets.GH_TOKEN }}
+
+
 #
