@@ -23,7 +23,7 @@ kind: Service
 metadata:
   name: fastapi
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: fastapi
   ports:
