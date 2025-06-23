@@ -41,5 +41,4 @@ jobs:
         author_email: sawandevrani28@gmail.com
         message: "Update image to latest"
         add: "k8s/fastapi-deployment.yaml"
-        github_token: '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'
-#
+        github_token: ${{ secrets.GH_TOKEN }}
